@@ -1,0 +1,51 @@
+﻿@using Portal.Service.Portal
+@using Portal.Statics
+@inject IPageModuleService PageModuleService
+
+@{
+    var layoutModule = PageModuleService.GetLayoutModule();
+    var headerModules = layoutModule.Where(pm => pm.PaneName == Variable.PageSectionName.Header.ToString());
+    var footerModules = layoutModule.Where(pm => pm.PaneName == Variable.PageSectionName.Footer.ToString());
+}
+<!DOCTYPE html>
+
+<html lang="fa" dir="rtl">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Style/bootstrap.rtl.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/kendo-ui/styles/kendo.bootstrap-v4.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/Script/jquery.js"></script>
+    <script type="text/javascript" src="~/kendo-ui/js/kendo.all.min.js"></script>
+    <script type="text/javascript" src="~/kendo-ui/js/kendo.aspnetmvc.min.js"></script>
+    <script type="text/javascript" src="~/Script/ModuleLoader.js"></script>
+    
+    
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="container">
+
+        <!-- page header start -->
+        @foreach (var module in headerModules)
+        {
+            <div class="module" data-moduleId="@module.ModuleId" data-homeController="@module.ModuleDef.HomeController">
+            </div>
+        }
+        <!-- page header end -->
+        <!-- page body start -->
+        <div class="row">
+            <div class="col-12">
+                @RenderBody()
+            </div>
+        </div>
+        <!-- page body end -->
+        <!-- page footer start -->
+        @foreach (var module in footerModules)
+        {
+            <div class="module" data-moduleId="@module.ModuleId" data-homeController="@module.ModuleDef.HomeController">
+            </div>
+        }
+        <!-- page footer end -->
+    </div>
+</body>
+</html>

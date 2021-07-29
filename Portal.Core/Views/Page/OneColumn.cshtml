@@ -1,0 +1,16 @@
+﻿
+@model List<Portal.DataLayer.Model.Entities.PageModule>
+ 
+@{
+    var currentModule = Model.Where(m => m.PaneName == "Content");
+}
+<div id="Content">
+    @foreach (var module in currentModule)
+    {
+        <div class="module" data-moduleId="@module.ModuleId" data-homeController="@module.ModuleDef.HomeController">
+            
+        </div>
+        
+
+    }
+</div>

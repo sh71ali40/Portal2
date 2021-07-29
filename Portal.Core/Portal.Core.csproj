@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<UserSecretsId>7e5619cb-e5ee-4bf9-9993-065f1333cd65</UserSecretsId>
+		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+		<AssemblyName>Portal</AssemblyName>
+		<RootNamespace>Portal</RootNamespace>
+		<RazorCompileOnPublish>false</RazorCompileOnPublish>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == '' Or '$(Configuration)' == 'Debug'">
+		<EnvironmentName>Development</EnvironmentName>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)' != '' AND '$(Configuration)' != 'Debug' ">
+		<EnvironmentName>Production</EnvironmentName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
+		<PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2021.1.119" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Portal.DataLayer\Portal.DataLayer.csproj" />
+		<ProjectReference Include="..\Portal.Infrustructure\Portal.Infrustructure.csproj" />
+		<ProjectReference Include="..\Portal.Service\Portal.Service.csproj" />
+		<ProjectReference Include="..\Portal.Statics\Portal.Statics.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Admin\ModuleDefManagement\Install\" />
+		<Folder Include="Admin\PageManagement\Install\" />
+		<Folder Include="CustomMiddleware\" />
+		<Folder Include="Module\" />
+		<Folder Include="Install\" />
+		<Folder Include="wwwroot\Font\" />
+	</ItemGroup>
+
+</Project>
