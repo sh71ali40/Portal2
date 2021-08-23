@@ -20,3 +20,5 @@ For module developent you have to publish Portal2 and follow the steps below:
 - Define New Page in Page table in sql
 - Define Module and Permissions in it's table
 - run Portal.Core.exe and navigate to /page?pageid=[PageId]
+
+For more information you can download Authentication(https://github.com/sh71ali40/Authentication) module
